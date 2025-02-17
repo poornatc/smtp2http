@@ -22,8 +22,8 @@ FROM gcr.io/distroless/static-debian12
 # Copy the Go application binary from the builder stage
 COPY --from=builder /app/smtp2http /smtp2http
 
-# Expose ports 1025 and 80
-EXPOSE 1025 80
+# Expose ports 1025 and 8080
+EXPOSE 1025 8080
 
 # Command to run the Go application
 CMD ["/smtp2http"]
