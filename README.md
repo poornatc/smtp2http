@@ -10,7 +10,8 @@ Eg. receive email for `foo@bar.com` and retreive it as http://localhost/mail/`fo
 ```bash
 docker run -v $PWD/server.key:/server.key \
     -v $PWD/server.pem:/server.pem \
-    smtp2http
+    -p 25:1025 -p 80:8080 \
+    rsubr/smtp2http
 ```
 
 ## Building
@@ -44,3 +45,11 @@ EOT
 ```bash
 wget -O - -S -q 'http://localhost:8080/mail/root@gchq.gov.uk'
 ```
+
+
+## TODO
+
+1. Parameterise max email size `MaxMessageBytes`, now hard coded to 1MB.
+2. Parameterise the mail prune period `filePruneInterval`, now hard coded to 15 mins.
+3. Document the email From/To regex for whitelisting.
+4. Document the BASE_DIR for storing emails.
